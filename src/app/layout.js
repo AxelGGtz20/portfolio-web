@@ -1,4 +1,7 @@
 import "./globals.css";
+import { ThemeProvider } from "@/context/ThemeContext";
+import { LanguageProvider } from "@/context/LanguageContext";
+import LanguageDocument from "@/components/layout/LanguageDocument";
 import Header from "@/components/layout/Header";
 
 export const metadata = {
@@ -8,10 +11,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es">
+    <html lang="es" suppressHydrationWarning>
       <body>
-        <Header />
-        {children}</body>
+        <ThemeProvider>
+          <LanguageProvider>
+            <LanguageDocument />
+            <Header />
+            {children}
+          </LanguageProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

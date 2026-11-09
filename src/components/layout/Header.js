@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
+import { useTheme } from "@/context/ThemeContext";
+import { useLanguage } from "@/context/LanguageContext";
 import styles from "./Header.module.css";
 
 const navLinks = [
@@ -14,40 +16,10 @@ const navLinks = [
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [language, setLanguage] = useState("ES");
-  const [theme, setTheme] = useState("light");
+  const {language, toggleLanguage} = useLanguage();
+  const {theme, toggleTheme} = useTheme();
 
-  //Recuperar el tema guardado
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-
-    const initialTheme =
-      savedTheme ||
-      (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-
-    setTheme(initialTheme);
-
-    document.documentElement.classList.toggle("dark", initialTheme === "dark");
-  }, []);
-
-  //Cambiar idioma
-  const toggleLanguage = () => {
-    setLanguage((prev) => (prev === "ES" ? "EN" : "ES"));
-    setMenuOpen(false);
-  };
-
-  //Cambiar tema
-  const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-
-    setTheme(newTheme);
-
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
-
-    localStorage.setItem("theme", newTheme);
-  };
-
-  const isEnglish = language === "EN";
+  const isEnglish = language === "en";
 
   return (
     <header className={styles.header}>
