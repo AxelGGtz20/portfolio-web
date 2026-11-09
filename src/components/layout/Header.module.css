@@ -1,0 +1,109 @@
+/*Contenedor principal*/
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+/*Contenedor del contenido*/
+.container {
+  max-width: 1280px;
+  min-height: 64px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/*Navegación móvil*/
+.navigation {
+  display: none;
+}
+
+.mobileNavigation {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--border);
+  background-color: var(--surface);
+}
+
+/*Enlaces*/
+.navLink {
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.navLink:hover {
+  color: var(--accent);
+}
+
+/*Controles*/
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.controlButton {
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--foreground);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.controlButton:hover {
+  background-color: var(--background);
+  color: var(--accent);
+}
+
+/*Botón menú móvil*/
+.menuButton {
+  display: block;
+  font-size: 22px;
+  margin-left: auto;
+}
+
+/*Tablet y escritorio*/
+@media (min-width: 768px) {
+  .container {
+    padding: 0 24px;
+  }
+
+  .navigation {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .controls {
+    margin-left: auto;
+    width: auto;
+  }
+
+  .mobileNavigation {
+    display: none;
+  }
+
+  .menuButton {
+    display: none;
+  }
+}

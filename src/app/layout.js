@@ -1,4 +1,5 @@
 import "./globals.css";
+import Header from "@/components/layout/Header";
 
 export const metadata = {
   title: "Axel Gutiérrez | Desarrollador de Software | Soporte Técnico",
@@ -8,7 +9,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
-      <body>{children}</body>
+      <body>
+        <Header />
+        {children}</body>
     </html>
   );
 }
