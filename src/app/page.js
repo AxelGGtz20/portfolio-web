@@ -1,15 +1,9 @@
+import Hero from "@/components/sections/Hero";
+
 export default function Home() {
   return (
     <main>
-      <section id="inicio">
-        <h1>Hola! Soy Axel Gutiérrez</h1>
-        <h2>Desarrollador de Software y Soporte Técnico</h2>
-
-        <p>
-          Estudiante de Ciencias Computacionales en la
-          Universidad Autónoma de Nuevo León.
-        </p>
-      </section>
+      <Hero />
 
       <section id="sobre-mi">
         <h2>Sobre mí</h2>
