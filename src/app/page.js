@@ -1,4 +1,5 @@
 import Hero from "@/components/sections/Hero";
+import Skills from "@/components/sections/Skills";
 
 export default function Home() {
   return (
@@ -13,9 +14,7 @@ export default function Home() {
         <h2>Proyectos</h2>
       </section>
 
-      <section id="habilidades">
-        <h2>Habilidades</h2>
-      </section>
+      <Skills />
 
       <section id="contacto">
         <h2>Contacto</h2>
