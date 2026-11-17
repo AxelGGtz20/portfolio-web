@@ -1,0 +1,210 @@
+.about {
+  width: 100%;
+  padding: 64px 6%;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  margin: 0 0 36px;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/*Presentación y formación académica*/
+.intro {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.presentation,
+.education,
+.interestCard {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+}
+
+.presentation h3,
+.education h3 {
+  margin: 0 0 16px;
+  font-size: 1.25rem;
+}
+
+.presentation p,
+.education p,
+.interestCard p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.educationIcon {
+  margin-bottom: 12px;
+  color: var(--accent);
+}
+
+.education h4 {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.education p + p {
+  margin-top: 4px;
+}
+
+.education span,
+.trainingItem span {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: var(--background);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/*Áreas de interés*/
+.interests {
+  margin-bottom: 48px;
+}
+
+.blockTitle {
+  margin: 0 0 24px;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.interestsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.interestCard {
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.interestIcon {
+  margin-bottom: 16px;
+  color: var(--accent);
+}
+
+.interestCard h4 {
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+}
+
+/*Formación complementaria*/
+.trainingList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.trainingItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.trainingItem h4 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+}
+
+.trainingItem p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.trainingItem span {
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+/*Tablet*/
+@media (min-width: 641px) {
+  .about {
+    padding: 80px 6%;
+  }
+
+  .sectionTitle {
+    margin-bottom: 44px;
+    font-size: 2.25rem;
+  }
+
+  .intro {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 24px;
+  }
+
+  .presentation,
+  .education,
+  .interestCard {
+    padding: 28px;
+  }
+
+  .interestsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .trainingItem {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .trainingItem span {
+    flex-shrink: 0;
+  }
+}
+
+/*Escritorio*/
+@media (min-width: 901px) {
+  .about {
+    padding: 96px 6%;
+  }
+
+  .sectionTitle {
+    margin-bottom: 52px;
+    font-size: 2.5rem;
+  }
+
+  .intro {
+    gap: 32px;
+    margin-bottom: 64px;
+  }
+
+  .interests {
+    margin-bottom: 64px;
+  }
+
+  .interestsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .trainingItem {
+    padding: 22px 24px;
+  }
+}
