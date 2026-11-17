@@ -1,14 +1,13 @@
 import Hero from "@/components/sections/Hero";
 import Skills from "@/components/sections/Skills";
+import AboutMe from "@/components/sections/AboutMe";
 
 export default function Home() {
   return (
     <main>
       <Hero />
 
-      <section id="sobre-mi">
-        <h2>Sobre mí</h2>
-      </section>
+      <AboutMe />
 
       <section id="proyectos">
         <h2>Proyectos</h2>
