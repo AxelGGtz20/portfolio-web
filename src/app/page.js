@@ -1,6 +1,7 @@
 import Hero from "@/components/sections/Hero";
 import Skills from "@/components/sections/Skills";
 import AboutMe from "@/components/sections/AboutMe";
+import Contact from "@/components/sections/Contact";
 
 export default function Home() {
   return (
@@ -15,9 +16,7 @@ export default function Home() {
 
       <Skills />
 
-      <section id="contacto">
-        <h2>Contacto</h2>
-      </section>
+      <Contact />
 
     </main>
   );
