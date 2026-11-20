@@ -141,6 +141,28 @@
   line-height: 1.7;
 }
 
+/*Mensajes del formulario*/
+.formSuccess,
+.formError {
+  margin: 0;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-left: 4px solid;
+  border-radius: 8px;
+  background: var(--background);
+  color: var(--foreground);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.formSuccess {
+  border-left-color: #16a34a;
+}
+
+.formError {
+  border-left-color: #dc2626;
+}
+
 /*Campos*/
 .form {
   display: flex;
