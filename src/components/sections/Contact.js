@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {Mail, Copy, Check, ExternalLink, Send,} from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 import styles from "./Contact.module.css";
 
@@ -16,6 +17,10 @@ export default function Contact() {
   const { language } = useLanguage();
   const isEnglish = language === "en";
   const [copied, setCopied] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState("idle");
+  const [captchaToken, setCaptchaToken] = useState("");
+  const captchaRef = useRef(null);
 
   const handleCopyEmail = async () => {
     try {
@@ -27,6 +32,70 @@ export default function Contact() {
       }, 2000);
     } catch {
       setCopied(false);
+    }
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+
+    if (isSubmitting) return;
+
+    if (!captchaToken) {
+      setSubmitStatus("captcha");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    try {
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+
+      if (!accessKey) {
+        throw new Error("Access Key not configured");
+      }
+
+      const formData = new FormData(form);
+
+      const data = {
+        ...Object.fromEntries(formData),
+        access_key: accessKey,
+        "h-captcha-response": captchaToken,
+      };
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      let result;
+
+      try {
+        result = await response.json();
+      } catch {
+        throw new Error("Invalid API response");
+      }
+
+      if (!response.ok || result?.success !== true) {
+        console.error("Web3Forms API status:", response.status);
+        throw new Error("Form submission failed");
+      }
+
+      setSubmitStatus("success");
+      form.reset();
+
+    } catch (error) {
+      console.error("Contact form error:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+      setCaptchaToken("");
+      captchaRef.current?.resetCaptcha();
     }
   };
 
@@ -141,30 +210,73 @@ export default function Contact() {
               </p>
             </header>
 
-            <form className={styles.form}>
+            <form className={styles.form} onSubmit={handleSubmit}>
               <div className={styles.formGroup}>
                 <label className={styles.label} htmlFor="contact-name"> {isEnglish ? "Name" : "Nombre"}</label>
-                <input className={styles.input} id="contact-name" name="name" type="text" required/>
+                <input className={styles.input} id="contact-name" name="name" type="text" maxLength={100} required/>
               </div>
 
               <div className={styles.formGroup}>
                 <label className={styles.label} htmlFor="contact-email"> {isEnglish ? "Email address" : "Correo electrónico"}</label>
-                <input className={styles.input} id="contact-email" name="email" type="email" required/>
+                <input className={styles.input} id="contact-email" name="email" type="email" maxLength={254} required/>
               </div>
 
               <div className={styles.formGroup}>
                 <label className={styles.label} htmlFor="contact-subject"> {isEnglish ? "Subject" : "Asunto"}</label>
-                <input className={styles.input} id="contact-subject" name="subject" type="text" required/>
+                <input className={styles.input} id="contact-subject" name="subject" type="text" maxLength={150} required/>
               </div>
 
               <div className={styles.formGroup}>
                 <label className={styles.label} htmlFor="contact-message"> {isEnglish ? "Message" : "Mensaje"}</label>
-                <textarea className={styles.textarea} id="contact-message" name="message" rows="5" required/>
+                <textarea className={styles.textarea} id="contact-message" name="message" rows="5" maxLength={2000} required/>
               </div>
 
-              <button className={styles.submitButton} type="submit"> {isEnglish ? "Send message" : "Enviar mensaje"}<Send /></button>
+              <HCaptcha
+                ref={captchaRef}
+                sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                reCaptchaCompat={false}
+                onVerify={(token) => {
+                  setCaptchaToken(token);
+                  setSubmitStatus("idle");
+                }}
+                onExpire={() => setCaptchaToken("")}
+                languageOverride={isEnglish ? "en" : "es"}
+              />
 
-              {/*Web3Forms Se integrará después*/}
+              <button className={styles.submitButton} type="submit" disabled={isSubmitting}>
+                {isSubmitting
+                  ? isEnglish
+                    ? "Sending..."
+                    : "Enviando..."
+                  : isEnglish
+                    ? "Send message"
+                    : "Enviar mensaje"}
+                <Send />
+              </button>
+
+              {submitStatus === "captcha" && (
+                <p className={styles.formError} role="alert">
+                  {isEnglish
+                    ? "Please complete the CAPTCHA verification before sending."
+                    : "Por favor, completa la verificación CAPTCHA antes de enviar el mensaje."}
+                </p>
+              )}
+
+              {submitStatus === "success" && (
+                <p className={styles.formSuccess} role="status" aria-live="polite">
+                  {isEnglish
+                    ? "Your message has been sent successfully. Thank you for contacting me!"
+                    : "¡Tu mensaje se ha enviado correctamente! Gracias por contactarme."}
+                </p>
+              )}
+
+              {submitStatus === "error" && (
+                <p className={styles.formError} role="alert">
+                  {isEnglish
+                    ? "Something went wrong while sending your message. Please try again."
+                    : "Ocurrió un problema al enviar tu mensaje. Inténtalo nuevamente."}
+                </p>
+              )}
             </form>
           </div>
         </div>
