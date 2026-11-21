@@ -8,8 +8,11 @@
   --foreground: #0F172A;
   --text-muted: #475569;
 
-  --accent: #059669;
-  --accent-hover: #047857;
+  --accent: #047857;
+  --accent-hover: #065F46;
+
+  --button-accent: #047857;
+  --button-accent-hover: #065F46;
 
   --border: #E2E8F0;
 }
@@ -37,8 +40,11 @@
   --foreground: #F8FAFC;
   --text-muted: #94A3B8;
 
-  --accent: #10B981;
-  --accent-hover: #34D399;
+  --accent: #34D399;
+  --accent-hover: #6EE7B7;
+
+  --button-accent: #047857;
+  --button-accent-hover: #065F46;
 
   --border: #334155;
 }
