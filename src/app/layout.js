@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/context/ThemeContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 import LanguageDocument from "@/components/layout/LanguageDocument";
 import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
 export const metadata = {
   title: "Axel Gutiérrez | Desarrollador de Software | Soporte Técnico",
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
             <LanguageDocument />
             <Header />
             {children}
+            <Footer />
           </LanguageProvider>
         </ThemeProvider>
       </body>
