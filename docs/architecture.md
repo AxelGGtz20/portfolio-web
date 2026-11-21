@@ -22,8 +22,9 @@ Contiene componentes de estructura común.
 
 - `Header.js`: muestra la navegación principal, el cambio de idioma, el cambio de tema y el menú móvil.
 - `LanguageDocument.js`: sincroniza el atributo `lang` del elemento HTML con el idioma seleccionado.
+- `Footer.js`: muestra nombre del autor, copyright y año actual.
 
-`Header` utiliza su propio CSS Module. `LanguageDocument` no requiere estilos propios.
+`Header` y `Footer` utiliza su propio CSS Module. `LanguageDocument` no requiere estilos propios.
 
 ### `src/components/sections/`
 
@@ -73,6 +74,7 @@ La ruta principal se define en `src/app/page.js`. Next.js representa automática
 3. `LanguageDocument`.
 4. `Header`.
 5. El contenido de la página recibido mediante `children`.
+6. `Footer`.
 
 En `page.js`, el componente `Home` devuelve un elemento `main` que, en orden, contiene:
 
@@ -97,7 +99,7 @@ Cada sección implementada consume `LanguageContext` para seleccionar textos en 
 
 La sección de Proyectos está implementada solamente como un encabezado placeholder. No contiene datos, tarjetas ni componentes de proyectos.
 
-No existe un componente Footer implementado.
+El `Footer` muestra el copyright del portafolio con el año dinámico y el nombre del propietario.
 
 ## 5. Contextos globales de idioma y tema
 
@@ -161,7 +163,8 @@ Al cargar la página principal:
 4. `LanguageDocument` mantiene sincronizado el atributo `lang`.
 5. `Header` representa navegación, idioma y tema.
 6. `page.js` compone las secciones principales.
-7. Los componentes consumidores acceden al contexto para renderizar el idioma correspondiente.
+7. `Footer`representa el copyright después del contenido de la página.
+8. Los componentes consumidores acceden al contexto para renderizar el idioma correspondiente.
 
 Las preferencias se almacenan en LocalStorage y se consultan desde el navegador. Por ello, el contenido inicial puede cambiar después de montar los proveedores.
 
@@ -181,6 +184,7 @@ Esta descripción corresponde al flujo implementado en el código. La disponibil
 - Sección `AboutMe`.
 - Sección `Skills`.
 - Sección `Contact`.
+- `Footer` con autor, copyright y año dinámico.
 - Contextos de idioma y tema.
 - Persistencia de preferencias en LocalStorage.
 - Sincronización del atributo `lang`.
@@ -192,7 +196,6 @@ Esta descripción corresponde al flujo implementado en el código. La disponibil
 ### Pendiente de desarrollo
 
 - Proyectos: existe solo el placeholder en `page.js`.
-- Footer: no existe implementación.
 
 ### Pendiente de validación
 
