@@ -66,7 +66,9 @@ public/
 
 docs/
 ├── architecture.md
-└── api-integrations.md
+├── api-integrations.md
+└── testing.md
+
 ```
 
 ## Requisitos previos
@@ -182,3 +184,4 @@ La configuración y los detalles técnicos se encuentran en [docs/api-integratio
 
 - [Arquitectura del proyecto](./docs/architecture.md): describe la organización de carpetas, el App Router, los componentes, los contextos y los estilos.
 - [Integraciones y APIs](./docs/api-integrations.md): describe hCaptcha, Web3Forms, variables de entorno y limitaciones técnicas.
+- [Pruebas y accesibilidad](./docs/testing.md): documenta las auditorías realizadas con Lighthouse y Axe Core, los resultados obtenidos y las correcciones de accesibilidad aplicadas.
