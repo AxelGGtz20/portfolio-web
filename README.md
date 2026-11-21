@@ -11,6 +11,8 @@ Su objetivo es ofrecer una presentación clara y responsive del perfil profesion
 - Tema claro y tema oscuro con preferencias persistentes.
 - Navegación interna entre las secciones del portafolio.
 - Presentación profesional con fotografía y descarga del CV.
+- Presentación de proyectos mediante tarjetas con tecnologías, descripciones y enlaces a repositorios de GitHub.
+- Imágenes de vista previa para los proyectos disponibles.
 - Presentación de habilidades técnicas y habilidades blandas.
 - Tarjetas de contacto y formulario con integración de hCaptcha.
 - Envío de mensajes mediante Web3Forms.
@@ -54,6 +56,7 @@ src/
 ├── components/
 │   ├── layout/
 │   └── sections/
+│       └──Projects/
 └── context/
 
 public/
@@ -127,11 +130,18 @@ La variable no es necesaria para ejecutar las demás secciones del portafolio. A
 
 Presentación principal con fotografía, nombre, profesión, descripción académica y enlaces internos.
 
-Incluye la descarga del CV y navegación hacia el apartado de proyectos, actualmente pendiente de desarrollo.
+Incluye la descarga del CV y navegación hacia el apartado de proyectos.
 
 ### AboutMe
 
 Información personal, formación académica, áreas de interés y formación complementaria.
+
+### Projects
+
+Presentación de proyectos personales y académicos mediante tarjetas reutilizables.
+Cada tarjeta muestra el título, las tecnologías utilizadas, una descripción y un enlace al repositorio de GitHub.
+
+Incluye imágenes de vista previa cuando están disponibles. Los proyectos sin imagen muestran un placeholder.
 
 ### Skills
 
@@ -149,6 +159,7 @@ Incluye la acción de copiar el correo y un formulario con integración de hCapt
 
 - Hero.
 - AboutMe.
+- Projects.
 - Skills.
 - Contact.
 - Navegación interna.
@@ -158,10 +169,6 @@ Incluye la acción de copiar el correo y un formulario con integración de hCapt
 - Descarga del CV.
 - Persistencia de preferencias en LocalStorage.
 - Footer
-
-### Pendiente
-
-- Projects: actualmente contiene un encabezado placeholder.
 
 ## Integraciones externas
 
