@@ -35,6 +35,16 @@ Contiene las secciones renderizadas en la página principal.
 - `Skills.js`: habilidades técnicas organizadas por categorías y habilidades blandas.
 - `Contact.js`: enlaces de contacto, copia del correo electrónico y formulario de contacto.
 
+### `src/components/sections/Projects`
+
+Contiene la sección de proyectos.
+
+- `Projects.js`:
+- `ProjetCard.js`:
+- `ProjectData.js`:
+- `Projects.module.css`:
+- `ProjectCard.module.css`:
+
 Cada sección tiene su propio CSS Module.
 
 ### `src/components/ui/`
@@ -52,6 +62,8 @@ Contiene el estado global basado en React Context.
 Contiene recursos servidos desde la raíz del sitio.
 
 - `images/AxelGutiérrez.jpg`: fotografía utilizada por `Hero`.
+- `images/Portfolio.png`: captura de pantalla utilizada como vista previa
+  del proyecto Portfolio Web.
 - `cv/CV_AxelGutierrez.pdf`: documento descargado por el botón del `Hero`.
 - `icons/skills/`: recursos SVG locales utilizados por `Skills`.
 
@@ -80,7 +92,7 @@ En `page.js`, el componente `Home` devuelve un elemento `main` que, en orden, co
 
 1. `Hero`.
 2. `AboutMe`.
-3. Una sección placeholder con el identificador `proyectos`.
+3. `Projects`.
 4. `Skills`.
 5. `Contact`.
 
@@ -94,10 +106,10 @@ Cada sección implementada consume `LanguageContext` para seleccionar textos en 
 
 - `Hero` usa `next/image` para la fotografía y `next/link` para la navegación interna. Además ofrece el CV como enlace descargable.
 - `AboutMe` presenta datos internos declarados dentro del componente y utiliza iconos de `lucide-react`.
+- `Projects` consume `LanguageContext` para seleccionar el idioma y utiliza `ProjectsData.js` como fuente de datos estáticos.
+  Recorre los proyectos mediante `map()` y renderiza una tarjeta reutilizable por cada elemento.
 - `Skills` define categorías y habilidades dentro del componente. Combina recursos SVG locales, iconos de `simple-icons` e iconos genéricos de `lucide-react`.
 - `Contact` mantiene el estado local del botón de copia, el estado de envío, el token CAPTCHA y el estado de resultado del formulario.
-
-La sección de Proyectos está implementada solamente como un encabezado placeholder. No contiene datos, tarjetas ni componentes de proyectos.
 
 El `Footer` muestra el copyright del portafolio con el año dinámico y el nombre del propietario.
 
@@ -168,7 +180,7 @@ Al cargar la página principal:
 
 Las preferencias se almacenan en LocalStorage y se consultan desde el navegador. Por ello, el contenido inicial puede cambiar después de montar los proveedores.
 
-La navegación principal utiliza enlaces internos a fragmentos existentes o al placeholder de Proyectos.
+La navegación principal utiliza enlaces internos a fragmentos existentes.
 
 En `Contact`, la copia del correo utiliza la API de portapapeles del navegador. El formulario requiere una selección CAPTCHA antes de enviarse. Cuando se completa la selección, construye los datos del formulario y los envía a Web3Forms desde el navegador.
 
@@ -182,6 +194,7 @@ Esta descripción corresponde al flujo implementado en el código. La disponibil
 - `Header` con navegación y controles.
 - Sección `Hero`.
 - Sección `AboutMe`.
+- Sección `Projects`
 - Sección `Skills`.
 - Sección `Contact`.
 - `Footer` con autor, copyright y año dinámico.
@@ -192,10 +205,6 @@ Esta descripción corresponde al flujo implementado en el código. La disponibil
 - CSS responsive con CSS Modules y consultas por ancho.
 - Recursos públicos para fotografía, CV e iconos.
 - Interfaz para copia de correo y envío de formulario.
-
-### Pendiente de desarrollo
-
-- Proyectos: existe solo el placeholder en `page.js`.
 
 ### Pendiente de validación
 
