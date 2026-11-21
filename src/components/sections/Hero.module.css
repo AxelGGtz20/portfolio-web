@@ -103,9 +103,9 @@
 }
 
 .primaryButton {
-  background: var(--accent);
+  background: var(--button-accent);
   color: #FFFFFF;
-  border: 1px solid var(--accent);
+  border: 1px solid var(--button-accent);
 }
 
 .secondaryButton {
@@ -188,8 +188,8 @@
 /*hover*/
 @media (hover: hover) {
   .primaryButton:hover {
-    background: var(--accent-hover);
-    border-color: var(--accent-hover);
+    background: var(--button-accent-hover);
+    border-color: var(--button-accent-hover);
     transform: translateY(-2px);
   }
 
