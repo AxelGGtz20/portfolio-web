@@ -15,6 +15,7 @@ Su objetivo es ofrecer una presentación clara y responsive del perfil profesion
 - Tarjetas de contacto y formulario con integración de hCaptcha.
 - Envío de mensajes mediante Web3Forms.
 - Uso de imágenes, iconos y documentos públicos.
+- Footer con copyright y año dinámico.
 
 ## Tecnologías
 
@@ -156,11 +157,11 @@ Incluye la acción de copiar el correo y un formulario con integración de hCapt
 - Diseño responsive.
 - Descarga del CV.
 - Persistencia de preferencias en LocalStorage.
+- Footer
 
 ### Pendiente
 
 - Projects: actualmente contiene un encabezado placeholder.
-- Footer: todavía no está implementado.
 
 ## Integraciones externas
 
