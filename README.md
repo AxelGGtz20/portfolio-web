@@ -67,7 +67,8 @@ public/
 docs/
 ├── architecture.md
 ├── api-integrations.md
-└── testing.md
+├── testing.md
+└── deployment.md
 
 ```
 
@@ -117,6 +118,21 @@ NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=tu_clave_de_acceso
 Las variables con el prefijo `NEXT_PUBLIC_` pueden exponerse en el navegador y no deben considerarse secretas.
 
 La variable no es necesaria para ejecutar las demás secciones del portafolio. Actualmente no existe un archivo `.env.example` en el repositorio.
+
+## Despliegue
+
+El portafolio está publicado mediante Netlify y utiliza GitHub como repositorio de código fuente.
+
+- **Plataforma:** Netlify.
+- **Rama de producción:** `main`.
+- **Compilación:** `npm run build`.
+- **Directorio de publicación:** `.next`.
+
+Los cambios incorporados a la rama `main` generan nuevos despliegues automáticamente. Los Pull Requests pueden generar versiones de vista previa.
+
+**Sitio publicado:** [https://axel-gutierrez-portfolio.netlify.app/]
+
+La configuración y el procedimiento de despliegue se describen en [docs/deployment.md](./docs/deployment.md).
 
 ## Scripts disponibles
 
@@ -170,7 +186,7 @@ Incluye la acción de copiar el correo y un formulario con integración de hCapt
 - Diseño responsive.
 - Descarga del CV.
 - Persistencia de preferencias en LocalStorage.
-- Footer
+- Footer.
 
 ## Integraciones externas
 
@@ -184,4 +200,5 @@ La configuración y los detalles técnicos se encuentran en [docs/api-integratio
 
 - [Arquitectura del proyecto](./docs/architecture.md): describe la organización de carpetas, el App Router, los componentes, los contextos y los estilos.
 - [Integraciones y APIs](./docs/api-integrations.md): describe hCaptcha, Web3Forms, variables de entorno y limitaciones técnicas.
+- [Despliegue](./docs/deployment.md): documenta la configuración de Netlify, la integración con GitHub, las variables de entorno y el procedimiento de publicación.
 - [Pruebas y accesibilidad](./docs/testing.md): documenta las auditorías realizadas con Lighthouse y Axe Core, los resultados obtenidos y las correcciones de accesibilidad aplicadas.
