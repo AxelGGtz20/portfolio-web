@@ -1,7 +1,6 @@
-/*Sección principal*/
 .skills {
   width: 100%;
-  padding: 64px 6%;
+  padding: 72px 6%;
   background: var(--background);
   color: var(--foreground);
 }
@@ -12,17 +11,29 @@
   margin: 0 auto;
 }
 
-/*Encabezado*/
 .header {
-  max-width: 700px;
-  margin: 0 auto 40px;
+  max-width: 680px;
+  margin: 0 auto 48px;
   text-align: center;
 }
 
-.title {
-  margin: 0 0 16px;
-  font-size: 2rem;
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--accent);
+  font-size: 0.78rem;
   font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0 0 14px;
+  font-size: clamp(2.15rem, 8vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
   color: var(--foreground);
 }
 
@@ -33,11 +44,10 @@
   line-height: 1.7;
 }
 
-/*Categorías técnicas*/
 .categories {
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 40px;
 }
 
 .category {
@@ -45,28 +55,51 @@
 }
 
 .categoryTitle {
-  margin: 0 0 20px;
-  font-size: 1.25rem;
-  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 18px;
+  font-size: 1.18rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
   color: var(--foreground);
 }
 
-/*Tarjetas de habilidades*/
+.categoryTitle::before {
+  width: 4px;
+  height: 1.25em;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  content: "";
+}
+
 .skillsGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 14px;
+  gap: 12px;
 }
 
 .skillCard {
   display: flex;
   align-items: center;
   gap: 14px;
-  min-height: 76px;
-  padding: 16px;
+  min-height: 72px;
+  padding: 14px 16px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 14px;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.skillCard:hover,
+.skillCard:focus-within {
+  border-color: var(--accent);
+  transform: translateY(-2px);
 }
 
 .iconContainer {
@@ -74,8 +107,10 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 38px;
-  height: 38px;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface));
   color: var(--foreground);
 }
 
@@ -87,34 +122,48 @@
 
 .skillName {
   color: var(--foreground);
-  font-size: 0.95rem;
-  font-weight: 500;
-  line-height: 1.4;
+  font-size: 0.96rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  line-height: 1.45;
 }
 
-/*Habilidades blandas*/
 .softSkills {
-  margin-top: 52px;
+  margin-top: 60px;
+  padding-top: 36px;
+  border-top: 1px solid var(--border);
 }
 
 .softSkillsGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 14px;
+  gap: 12px;
 }
 
 .softSkill {
   display: flex;
   align-items: center;
   gap: 12px;
-  min-height: 68px;
-  padding: 16px;
+  min-height: 72px;
+  padding: 14px 16px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 14px;
   color: var(--foreground);
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: 0.96rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  line-height: 1.45;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.softSkill:hover,
+.softSkill:focus-within {
+  border-color: var(--accent);
+  transform: translateY(-2px);
 }
 
 .softSkill svg {
@@ -122,14 +171,13 @@
   color: var(--accent);
 }
 
-/*Tablet*/
 @media (min-width: 641px) {
   .skills {
     padding: 80px 6%;
   }
 
   .title {
-    font-size: 2.3rem;
+    font-size: clamp(2.4rem, 5vw, 3rem);
   }
 
   .skillsGrid {
@@ -141,7 +189,6 @@
   }
 }
 
-/*Escritorio*/
 @media (min-width: 901px) {
   .skills {
     padding: 96px 6%;

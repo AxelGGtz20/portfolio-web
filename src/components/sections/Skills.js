@@ -164,11 +164,15 @@ export default function Skills() {
   const isEnglish = language === "en";
 
   return (
-    <section id="habilidades" className={styles.skills}>
+    <section id="habilidades" className={styles.skills} aria-labelledby="skills-title">
       <div className={styles.container}>
 
         <header className={styles.header}>
-          <h2 className={styles.title}>
+          <span className={styles.eyebrow}>
+            {isEnglish ? "Technical profile" : "Perfil técnico"}
+          </span>
+
+          <h2 id="skills-title" className={styles.title}>
             {isEnglish ? "Skills" : "Habilidades"}
           </h2>
 
@@ -180,7 +184,7 @@ export default function Skills() {
         </header>
 
         {/*Habilidades técnicas*/}
-        <div className={styles.categories}>
+        <div className={styles.categories} aria-label={isEnglish ? "Technical skills" : "Habilidades técnicas"}>
           {skillCategories.map((category) => (
             <SkillCategory key={category.id} category={category} isEnglish={isEnglish} />
           ))}
