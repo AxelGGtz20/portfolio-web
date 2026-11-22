@@ -54,7 +54,13 @@ export const projects = [
       en: "Mobile application for creating, viewing, searching, and managing notes, using the device's local storage to preserve information.",
     },
 
-    image: null,
+    image: {
+      src: "/images/app-notas.jpg",
+      alt: {
+        es: "Página principal de la app de notas.",
+        en: "Main page of the notes app.",
+      },
+    },
 
     github: "https://github.com/Erick12L/App-de-notas",
   },
