@@ -17,7 +17,7 @@ export default function Hero() {
         <div className={styles.imageContainer}>
           <Image
             src="/images/AxelGutiérrez.jpg"
-            alt={isEnglish ? "Axel Gutiérrez" : "Axel Gutiérrez"}
+            alt={isEnglish ? "Photo of Axel Gutiérrez" : "Fotografía de Axel Gutiérrez"}
             width={400}
             height={400}
             priority

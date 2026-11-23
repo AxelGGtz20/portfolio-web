@@ -99,7 +99,6 @@ const softSkills = [
   },
 ];
 
-
 //Tarjeta individual
 function SkillCard({ skill, isEnglish }) {
   const GenericIcon = skill.genericIcon;
@@ -157,7 +156,6 @@ function SkillCategory({ category, isEnglish }) {
     </div>
   );
 }
-
 
 export default function Skills() {
   const { language } = useLanguage();
