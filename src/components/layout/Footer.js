@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import styles from "./Footer.module.css";
 
